@@ -1,0 +1,25 @@
+
+.popup{
+  z-index:100;
+  background:white;
+  border: 5px lightblue solid;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width:200px;
+  min-height:100px;
+  width:25%;
+  height:150px;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+}
+.black{
+  z-index:99;
+  background:black;
+  opacity:0.5;
+  width:100vw;
+  height:100vh;
+  position:absolute;
+}
