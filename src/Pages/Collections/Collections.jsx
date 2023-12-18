@@ -33,7 +33,7 @@ let Collections=(props)=>{
     }
     navigate(location.pathname+location.hash ,{});
   },[])
-  let htmlImagesOfCollections=props.collectionsVerbs.map((c,index)=><ImageOfCollection startEditCollection={startEditCollection} index={index} name={c.name} verbs={c.collection}/>);
+  let htmlImagesOfCollections=props.collectionsVerbs.map((c,index)=><ImageOfCollection deleteCollection={props.deleteCollection} startEditCollection={startEditCollection} index={index} name={c.name} verbs={c.collection}/>);
   return(
     <>
       <div className={classes.collectionsWrapper}>

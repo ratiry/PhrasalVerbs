@@ -39,6 +39,9 @@ function App() {
     setCollectionsVerbs(collectionsVerbs=>[...collectionsVerbs].map((el,i)=>i==index ? ({...el, collection:[...collection]}) : el))
   
   }
+  let deleteCollection=(index)=>{
+    setCollectionsVerbs(collections=>collections.filter((item,i)=>i!=index))
+  }
   useEffect(()=>{
     setCollectionsVerbs( upDatingLocalState(collectionsVerbs,phrasalVerbs) )
     setUnSolvedVerbs(upDatingMistakes(unSolvedVerbs,phrasalVerbs))
@@ -53,7 +56,7 @@ function App() {
             <Routes>
               <Route  path={Urls.verbs}  element={<Verbs collection={[]} phrasalVerbs={phrasalVerbs} isInPopup={false}/>}></Route>
               <Route path={Urls.collection} element={<Collection collectionsVerbs={collectionsVerbs} deleteUnSolvedVerb={deleteUnSolvedVerb} unSolvedVerbs={unSolvedVerbs} phrasalVerbs={phrasalVerbs}  />}/>
-              <Route path={Urls.collections}  element={<Collections editCollection={editCollection} unSolvedVerbs={unSolvedVerbs} makeNewCollectionVerb={makeNewCollectionVerb} addUnSolvedVerbs={addUnSolvedVerbs}  collectionsVerbs={collectionsVerbs}/>}></Route> 
+              <Route path={Urls.collections}  element={<Collections deleteCollection={deleteCollection} editCollection={editCollection} unSolvedVerbs={unSolvedVerbs} makeNewCollectionVerb={makeNewCollectionVerb} addUnSolvedVerbs={addUnSolvedVerbs}  collectionsVerbs={collectionsVerbs}/>}></Route> 
             </Routes>
           </Container>
         <Footer/>
