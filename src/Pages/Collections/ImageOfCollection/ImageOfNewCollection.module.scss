@@ -1,20 +1,14 @@
 
 
-.wrapper{
-  width:250px;
+
+.ImageOfCollection{
   border-radius: 5px;
   border:5px yellow solid;
   background:white;
   display:flex;
-  height:80px;
-  max-height:10vh;
+  min-height:80px;
+  padding:5px;
+  width:250px;
   flex-direction:column;
-  .imageOfCollection{
-    display:flex;
-    flex-wrap:wrap;
-    overflow: scroll;;
-    
-    
-
-  }
+  align-items: center;
 }

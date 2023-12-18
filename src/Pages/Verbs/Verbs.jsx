@@ -11,11 +11,14 @@ import { Urls } from './../../App';
 let Verbs=(props)=>{
   let collections=props.collectionsData;
   let location=useLocation();
-  let [collection,changeCollection]=useState([])
+  let [collection,changeCollection]=useState(props.collection[0]);
+  window.collection=collection;
   let navigate=useNavigate();
   let Submit=(collection)=>{
-    if(collection.length>0){
+    if(collection.length>0 & props.isInPopup==false ){
       navigate(Urls.collection,{state:{ collection:collection,location:location}})
+    }else if(collection.length>0){
+      props.editCollection(collection);
     }
   }
   let onVerbClick=(verb,selected)=>{

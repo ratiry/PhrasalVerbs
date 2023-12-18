@@ -7,4 +7,11 @@ let Button=(props)=>{
     </button>
   )
 }
+export let ButtonWithIcon=(props)=>{
+  return(
+    <button onClick={props.onClick} className={classes.buttonWithIcon}>
+      {props.children}
+    </button>
+  )
+}
 export default Button;
