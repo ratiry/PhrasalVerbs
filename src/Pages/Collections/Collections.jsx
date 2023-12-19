@@ -43,7 +43,7 @@ let Collections=(props)=>{
         {htmlImagesOfCollections}
       </div>
     </div>
-    { shouldShowPopup && <Popup><Verbs editCollection={editCollection} isInPopup={true} collection={[editedCollection]} phrasalVerbs={phrasalVerbs}/></Popup> }
+    { shouldShowPopup && <Popup><Verbs editCollection={editCollection} isInPopup={true} collection={editedCollection} phrasalVerbs={phrasalVerbs}/></Popup> }
     </>
 
   )

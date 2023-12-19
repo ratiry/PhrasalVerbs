@@ -9,9 +9,8 @@ import findVerbInCollection from '../../Helpers/findVerbInCollection';
 import { useLocation } from 'react-router-dom';
 import { Urls } from './../../App';
 let Verbs=(props)=>{
-  let collections=props.collectionsData;
   let location=useLocation();
-  let [collection,changeCollection]=useState(props.collection[0]);
+  let [collection,changeCollection]=useState(props.collection );
   window.collection=collection;
   let navigate=useNavigate();
   let Submit=(collection)=>{

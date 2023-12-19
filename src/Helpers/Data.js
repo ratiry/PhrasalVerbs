@@ -125,6 +125,7 @@ export let phrasalVerbs=[
   {name:"come out",description:["be published","bloom"]},
   {name:"come round",description:["visit casually","regain consciousness","(to + O) be persuaded to change opinion"]},
   {name:"come to",description:["regain consciousness"],synonyms:["come round"]},
-  {name:"come through",description:["survive","when piece of information or a document __, you receive it","If an emotion ___, other people can notice it","to succeed in a difficult situation","to continue to live after an accident or a difficult or dangerous situation","to do something that you have agreed to do or been asked to do"],synonyms:["get through","carry out","pull off"]}
-  
+  {name:"come through",description:["survive","when piece of information or a document __, you receive it","If an emotion ___, other people can notice it","to succeed in a difficult situation","to continue to live after an accident or a difficult or dangerous situation","to do something that you have agreed to do or been asked to do"],synonyms:["get through","carry out","pull off"]},
+  {name:"do down",description:["speak badly of smb"]},
+  {name:"do in",description:["kill"]},
 ]
