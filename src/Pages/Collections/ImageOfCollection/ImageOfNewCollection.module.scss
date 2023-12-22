@@ -3,12 +3,13 @@
 
 .ImageOfCollection{
   border-radius: 5px;
-  border:5px yellow solid;
+  border:5px black solid;
   background:white;
   display:flex;
   min-height:80px;
   padding:5px;
   width:250px;
+  border-radius:15px;
   flex-direction:column;
   align-items: center;
 }

@@ -4,7 +4,9 @@
   align-items:center;
   flex-direction: column;;
   overflow: scroll;
-  
   width:100%;
-  
+  margin-top:20px;
+  &::-webkit-scrollbar {
+    width:0;
+  }
 }
