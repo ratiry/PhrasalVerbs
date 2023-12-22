@@ -9,4 +9,16 @@
   justify-content: center;
   font-size: 25px;
   border:2px solid black;
+  transition:0.2s linear all;
+  margin:20px;
+  span{
+    color:black;
+  }
+  &:hover{
+    span{
+      color:white;
+
+    }
+    background:black;
+  }
 }
