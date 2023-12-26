@@ -1,0 +1,28 @@
+
+.button{
+  min-width:150px;
+  padding:10px;
+  background-color: white; 
+  top:50%;
+  background-color:#0a0a23;
+  color: #fff;
+  border:none;
+  margin:5px;
+  border-radius:10px;
+  box-shadow: 0px 0px 2px 2px rgb(0,0,0);
+  transition: all 0.2s ease;
+  &:hover{
+    color:black;
+    background-color:white;
+  }
+  span{
+    font-size: 25px;
+    font-weight:bold;
+  }
+}
+.buttonWithIcon{
+  border:none;
+  background:none;
+  width:20px;
+  
+}
