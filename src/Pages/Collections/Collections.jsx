@@ -6,7 +6,7 @@ import { useState } from "react";
 import AddNewCollection from "./AddNewCollection/AddNewCollection";
 import { Urls } from './../../App';
 import Popup from "../../common/Popup/Popup";
-import { phrasalVerbs } from "../../Helpers/Data";
+import  data  from "../../Helpers/Data";
 import Verbs from "../Verbs/Verbs";
 let Collections=(props)=>{
   let location=useLocation();
@@ -43,7 +43,7 @@ let Collections=(props)=>{
         {htmlImagesOfCollections}
       </div>
     </div>
-    { shouldShowPopup && <Popup><Verbs editCollection={editCollection} isInPopup={true} collection={editedCollection} phrasalVerbs={phrasalVerbs}/></Popup> }
+    { shouldShowPopup && <Popup><Verbs editCollection={editCollection} isInPopup={true} collection={editedCollection} phrasalVerbs={data[0].contents}/></Popup> }
     </>
 
   )
