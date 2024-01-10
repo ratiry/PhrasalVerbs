@@ -25,9 +25,6 @@ export const Urls={
 function App() {
   let [collectionsVerbs,setCollectionsVerbs]=useLocalStorage("VerbsColll",[])
   let [unSolvedVerbs,setUnSolvedVerbs]=useLocalStorage("unSSolvedVerbs",[]);
-  window.unSolvedVerbs=unSolvedVerbs;
-  let location=useLocation();
-  let navigate=useNavigate();
   let addUnSolvedVerbs=(Verbs)=>{
     let a=unSolvedVerbs.concat(composeUnSolvedVerbs( Verbs,data[0].contents,unSolvedVerbs));
     setUnSolvedVerbs(a);
