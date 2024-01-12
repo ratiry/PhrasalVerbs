@@ -34,17 +34,17 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 
 
 // }))
-const collectionsStore=  Array(data.length).fill(0).map((e,i)=>String(i+1)).map((el)=> create(   
+export const collectionsStore=  Array(data.length).fill(0).map((e,i)=>String(i+1)).map((el)=> create(   
       persist(
           (set)=>({
             collections:[],
             mistakes:[],
             makeNewCollection:(name,collection)=>set(state=>{
               let newCollection={name:name,collection:collection};
-              return {collections:[...state.collection,newCollection]}
+              return {collections:[...state.collections,newCollection]}
             }),
             editCollection:(collection,index)=>set(state=>{
-              return {collections:state.collection.map((el,i)=>i==index ? ({...el, collection:[...collection]}) : el)}
+              return {collections:state.collections.map((el,i)=>i==index ? ({...el, collection:[...collection]}) : el)}
             }),
             deleteCollection:(index)=>set(state=>{
               return {collections:state.collections.filter((item,i)=>i!=index)}
