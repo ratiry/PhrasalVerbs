@@ -72,3 +72,9 @@ export const usePickedType=create(set=>({
     return {pickedType:index}
   }),
 }))
+export const usePickedCollection=create(set=>({
+  pickedCollection:0,
+  setPickedCollection:(index)=>set(state=>{
+    return {pickedCollection:index}
+  })
+}))

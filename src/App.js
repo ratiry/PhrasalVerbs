@@ -13,8 +13,9 @@ import checkForDoubleCollection from './Helpers/CheckForDoubleCollection';
 import useLocalStorage from './Helpers/Hooks/useLocalStorage';
 import {upDatingLocalState,upDatingMistakes} from './Helpers/UpdatingLocalState';
 import Container from './common/Container/Container';
-import { usePickedType, useStore } from './Helpers/store';
+import { usePickedCollection, usePickedType, useStore } from './Helpers/store';
 import PickType from './Pages/PickType/PickType';
+import breakDownHash from './Helpers/BreakDownHash';
 export const Urls={
   collection:"/Collection",
   collections:"/Collections",
@@ -26,7 +27,7 @@ function App() {
   let [collectionsVerbs,setCollectionsVerbs]=useLocalStorage("VerbsColll",[])
   let [unSolvedVerbs,setUnSolvedVerbs]=useLocalStorage("unSSolvedVerbs",[]);
   const setPickedType=usePickedType(state=>state.setPickedType);
-  
+  const setPickedCollection=usePickedCollection(state=>state.setPickedCollection);
   let location=useLocation();
   let addUnSolvedVerbs=(Verbs)=>{
     let a=unSolvedVerbs.concat(composeUnSolvedVerbs( Verbs,data[0].contents,unSolvedVerbs));
@@ -43,7 +44,7 @@ function App() {
   
   }
   let deleteCollection=(index)=>{
-    setCollectionsVerbs(collections=>collections.filter((item,i)=>i!=index))
+     setCollectionsVerbs(collections=>collections.filter((item,i)=>i!=index))
   }
   useEffect(()=>{
     setCollectionsVerbs( upDatingLocalState(collectionsVerbs,data[0].contents) )
@@ -52,7 +53,9 @@ function App() {
   useEffect(()=>{
     if(location.hash!=""){
       if(location.pathname ==Urls.mistakes || Urls.collection == location.pathname){
-
+        const brokenDownHash=breakDownHash(location.path,location.path.length+1);
+        setPickedType(brokenDownHash[0]);
+        setPickedCollection(brokenDownHash[1]);
       }else if(location.pathname==Urls.collections || Urls.verbs==location.pathname){
         setPickedType(Number(location.hash.slice(1)))
       }
