@@ -56,6 +56,7 @@ function App() {
         const brokenDownHash=breakDownHash(location.hash,1);
         setPickedType(brokenDownHash[0]);
         setPickedCollection(brokenDownHash[1]);
+        debugger;
       }else if(location.pathname==Urls.collections || Urls.verbs==location.pathname){
         setPickedType(Number(location.hash.slice(1)))
       }

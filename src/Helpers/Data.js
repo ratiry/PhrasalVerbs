@@ -209,7 +209,7 @@ let data=[
   {
     name:"idioms",
     contents:[
-      {name:"as right as rain",description:["very,very good"]}
+      {name:"as right as rain",description:["very,very good"]},
     ]
   }
 ]
