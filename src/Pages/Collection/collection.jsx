@@ -18,6 +18,7 @@ let Collection=(props)=>{
   let [memmoCollection,setMemmooCollection]=useState([]);
   let [cards,setCards]=useState([]);
   const pickedType=usePickedType(state=>state.pickedType);
+
   const pickedCollection=usePickedCollection(state=>state.pickedCollection);
   const collections=collectionsStore[pickedType](state=>state.collections);
   const mistakes=collectionsStore[pickedType](state=>state.mistakes);
@@ -36,7 +37,7 @@ let Collection=(props)=>{
       setMemmooCollection(location.state.collection);
     }
 
-  },[pickedCollection])
+  },[pickedCollection,pickedType])
   // useEffect(()=>{
   //   if(location.state==undefined & location.hash!=""){
   //     if(location.hash.slice(1)!=Urls.mistakes){
@@ -66,7 +67,7 @@ let Collection=(props)=>{
   let navigate=useNavigate();
   let [shouldShowToCollectionButton,setShouldShowToCollection]=useState(false);
   let onClickPopup=(name)=>{
-    navigate(Urls.collections,{state:{
+    navigate(Urls.collections+ "#"+pickedType,{state:{
       unSolved:unSolved,
       location:location,
       collection:memmoCollection,
@@ -77,7 +78,7 @@ let Collection=(props)=>{
     if(!solved){
       setUnsolved(oldArray => [...oldArray, card.name]);
 
-    }else if(location.hash.slice(1)==Urls.mistakes){
+    }else if(location.pathname==Urls.mistakes){
       deleteUnSolved(card);
       
     }

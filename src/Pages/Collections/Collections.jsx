@@ -13,13 +13,13 @@ let Collections=(props)=>{
   let location=useLocation();
   let navigate=useNavigate();
   const pickedType=usePickedType(state=>state.pickedType);
-  debugger;
   const SetMakeNewCollection=collectionsStore[pickedType](state=>state.makeNewCollection);
   const SSetEditedCollection=collectionsStore[pickedType](state=>state.editCollection);
   const SetDeletedCollection=collectionsStore[pickedType](state=>state.deleteCollection);
   const collections=collectionsStore[pickedType](state=>state.collections);
   const unSolved=collectionsStore[pickedType](state=>state.mistakes);
   const addUnSolved=collectionsStore[pickedType](state=>state.addUnSolved);
+  const deleteCollection=collectionsStore[pickedType](state=>state.deleteCollection);
   let [shouldShowPopup,setShouldShowPopup]=useState(false);
   let [editedCollection,setEditedCollection]=useState([]);
   let [indexOfEditedCollection,setIndexOfEditedCollection]=useState(0);
@@ -48,7 +48,7 @@ let Collections=(props)=>{
     }
     navigate(location.pathname+location.hash ,{});
   },[pickedType])
-  let htmlImagesOfCollections=collections.map((c,index)=><ImageOfCollection deleteCollection={props.deleteCollection} startEditCollection={startEditCollection} index={index} name={c.name} verbs={c.collection}/>);
+  let htmlImagesOfCollections=collections.map((c,index)=><ImageOfCollection deleteCollection={deleteCollection} startEditCollection={startEditCollection} index={index} name={c.name} verbs={c.collection}/>);
   return(
     <>
       <div className={classes.collectionsWrapper}>
