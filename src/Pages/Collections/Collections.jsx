@@ -36,7 +36,7 @@ let Collections=(props)=>{
     setShouldShowPopup(false);
   }
   useEffect(()=>{
-    if(location.state !=undefined ){
+    if(location.state !=undefined ){ 
       // props.addUnSolvedVerbs(location.state.unSolved);
       debugger;
       addUnSolved(location.state.unSolved,pickedType);
