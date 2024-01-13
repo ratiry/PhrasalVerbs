@@ -56,12 +56,12 @@ export const collectionsStore=  Array(data.length).fill(0).map((e,i)=>String(i+1
               return {mistakes:state.mistakes.filter(item => item.name !== mistake.name)}
             }),
             addUnSolved:(newMistakes,typeIndex)=>set(state=>{
-              return {mistakes: state.mistakes.concat(composeUnSolvedVerbs( newMistakes,data[typeIndex].contents,...state.mistakes))}
+              return {mistakes: state.mistakes.concat(composeUnSolvedVerbs( newMistakes,data[typeIndex].contents,state.mistakes))}
             }),
         }),
         {
           name:el,
-          storage: createJSONStorage(() => sessionStorage)
+          storage: createJSONStorage(() => localStorage)
         }
       )
 ));

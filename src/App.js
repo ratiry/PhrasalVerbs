@@ -20,7 +20,7 @@ export const Urls={
   collection:"/Collection",
   collections:"/Collections",
   verbs:"/Verbs",
-  mistakes:"Mistakes",
+  mistakes:"/Mistakes",
   pickType:"/"
 }
 function App() {
@@ -53,7 +53,7 @@ function App() {
   useEffect(()=>{
     if(location.hash!=""){
       if(location.pathname ==Urls.mistakes || Urls.collection == location.pathname){
-        const brokenDownHash=breakDownHash(location.path,location.path.length+1);
+        const brokenDownHash=breakDownHash(location.hash,1);
         setPickedType(brokenDownHash[0]);
         setPickedCollection(brokenDownHash[1]);
       }else if(location.pathname==Urls.collections || Urls.verbs==location.pathname){
@@ -72,7 +72,9 @@ function App() {
 
               <Route  path={Urls.verbs}  element={<Verbs collection={[]} phrasalVerbs={data[0].contents} isInPopup={false}/>}></Route>
               <Route path={Urls.collection} element={<Collection collectionsVerbs={collectionsVerbs} deleteUnSolvedVerb={deleteUnSolvedVerb} unSolvedVerbs={unSolvedVerbs} phrasalVerbs={data[0].contents}  />}/>
+              <Route path={Urls.mistakes} element={<Collection collectionsVerbs={collectionsVerbs} deleteUnSolvedVerb={deleteUnSolvedVerb} unSolvedVerbs={unSolvedVerbs} phrasalVerbs={data[0].contents}  />}/>
               <Route path={Urls.collections}  element={<Collections deleteCollection={deleteCollection} editCollection={editCollection} unSolvedVerbs={unSolvedVerbs} makeNewCollectionVerb={makeNewCollectionVerb} addUnSolvedVerbs={addUnSolvedVerbs}  collectionsVerbs={collectionsVerbs}/>}></Route> 
+
               <Route path={Urls.pickType} element={<PickType/>}></Route>
             </Routes>
           </Container>

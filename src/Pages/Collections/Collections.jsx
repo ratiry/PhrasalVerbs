@@ -23,6 +23,7 @@ let Collections=(props)=>{
   let [shouldShowPopup,setShouldShowPopup]=useState(false);
   let [editedCollection,setEditedCollection]=useState([]);
   let [indexOfEditedCollection,setIndexOfEditedCollection]=useState(0);
+  let [shouldShowPage,setShouldShowPage]=useState(false);
   let startEditCollection=(collection,index)=>{
     setShouldShowPopup(true);
     setEditedCollection(collection);
@@ -30,14 +31,15 @@ let Collections=(props)=>{
     setIndexOfEditedCollection(index);
   }
   let editCollection=(collection)=>{
-    props.editCollection(collection,indexOfEditedCollection);
+    // props.editCollection(collection,indexOfEditedCollection);
     SSetEditedCollection(collection,indexOfEditedCollection);
     setShouldShowPopup(false);
   }
   useEffect(()=>{
     if(location.state !=undefined ){
-      props.addUnSolvedVerbs(location.state.unSolved);
-      addUnSolved(location.state.unSolved);
+      // props.addUnSolvedVerbs(location.state.unSolved);
+      debugger;
+      addUnSolved(location.state.unSolved,pickedType);
       if(location.state.name !=undefined){
         
         props.makeNewCollectionVerb(location.state.name,location.state.collection);
@@ -45,13 +47,13 @@ let Collections=(props)=>{
       }
     }
     navigate(location.pathname+location.hash ,{});
-  },[])
+  },[pickedType])
   let htmlImagesOfCollections=collections.map((c,index)=><ImageOfCollection deleteCollection={props.deleteCollection} startEditCollection={startEditCollection} index={index} name={c.name} verbs={c.collection}/>);
   return(
     <>
       <div className={classes.collectionsWrapper}>
        <AddNewCollection onClick={()=>{navigate(Urls.verbs,{})}}/>
-       {unSolved.length>0 && <ImageOfCollection  name={Urls.mistakes} index={Urls.mistakes} verbs={unSolved}/> }
+       {unSolved.length>0 && <ImageOfCollection  name={Urls.mistakes.slice(1)} index={Urls.mistakes} verbs={unSolved}/> }
       <div className={classes.collections}>
         {htmlImagesOfCollections}
       </div>
