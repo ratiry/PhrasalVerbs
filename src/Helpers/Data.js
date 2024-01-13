@@ -205,6 +205,12 @@ let data=[
       {name:"turn to",description:["go to sb for help, advice etc"]},
       {name:"work up",description:["develop"]},
     ]
+  },
+  {
+    name:"idioms",
+    contents:[
+      {name:"as right as rain",description:["very,very good"]}
+    ]
   }
 ]
 export default data;
