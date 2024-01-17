@@ -29,23 +29,6 @@ function App() {
   const setPickedType=usePickedType(state=>state.setPickedType);
   const setPickedCollection=usePickedCollection(state=>state.setPickedCollection);
   let location=useLocation();
-  let addUnSolvedVerbs=(Verbs)=>{
-    let a=unSolvedVerbs.concat(composeUnSolvedVerbs( Verbs,data[0].contents,unSolvedVerbs));
-    setUnSolvedVerbs(a);
-  }
-  let deleteUnSolvedVerb=(Verb)=>{
-    setUnSolvedVerbs(unSolvedVerbs =>unSolvedVerbs.filter(item => item.name !== Verb.name))
-  }
-  let makeNewCollectionVerb=(name,collection)=>{
-    setCollectionsVerbs(collectionsVerbs=>[...collectionsVerbs,{name:name,collection:collection}])
-  }
-  let editCollection=(collection,index)=>{
-    setCollectionsVerbs(collectionsVerbs=>[...collectionsVerbs].map((el,i)=>i==index ? ({...el, collection:[...collection]}) : el))
-  
-  }
-  let deleteCollection=(index)=>{
-     setCollectionsVerbs(collections=>collections.filter((item,i)=>i!=index))
-  }
   useEffect(()=>{
     setCollectionsVerbs( upDatingLocalState(collectionsVerbs,data[0].contents) )
     setUnSolvedVerbs(upDatingMistakes(unSolvedVerbs,data[0].contents))
@@ -72,10 +55,9 @@ function App() {
             <Routes>
 
               <Route  path={Urls.verbs}  element={<Verbs collection={[]} phrasalVerbs={data[0].contents} isInPopup={false}/>}></Route>
-              <Route path={Urls.collection} element={<Collection collectionsVerbs={collectionsVerbs} deleteUnSolvedVerb={deleteUnSolvedVerb} unSolvedVerbs={unSolvedVerbs} phrasalVerbs={data[0].contents}  />}/>
-              <Route path={Urls.mistakes} element={<Collection collectionsVerbs={collectionsVerbs} deleteUnSolvedVerb={deleteUnSolvedVerb} unSolvedVerbs={unSolvedVerbs} phrasalVerbs={data[0].contents}  />}/>
-              <Route path={Urls.collections}  element={<Collections deleteCollection={deleteCollection} editCollection={editCollection} unSolvedVerbs={unSolvedVerbs} makeNewCollectionVerb={makeNewCollectionVerb} addUnSolvedVerbs={addUnSolvedVerbs}  collectionsVerbs={collectionsVerbs}/>}></Route> 
-
+              <Route path={Urls.collection} element={<Collection  />}/>
+              <Route path={Urls.mistakes} element={<Collection  />}/>
+              <Route path={Urls.collections}  element={<Collections />}></Route> 
               <Route path={Urls.pickType} element={<PickType/>}></Route>
             </Routes>
           </Container>

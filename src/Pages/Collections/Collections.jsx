@@ -31,18 +31,15 @@ let Collections=(props)=>{
     setIndexOfEditedCollection(index);
   }
   let editCollection=(collection)=>{
-    // props.editCollection(collection,indexOfEditedCollection);
     SSetEditedCollection(collection,indexOfEditedCollection);
     setShouldShowPopup(false);
   }
   useEffect(()=>{
     if(location.state !=undefined ){ 
-      // props.addUnSolvedVerbs(location.state.unSolved);
       debugger;
       addUnSolved(location.state.unSolved,pickedType);
       if(location.state.name !=undefined){
         
-        props.makeNewCollectionVerb(location.state.name,location.state.collection);
         SetMakeNewCollection(location.state.name,location.state.collection);
       }
     }
@@ -52,7 +49,7 @@ let Collections=(props)=>{
   return(
     <>
       <div className={classes.collectionsWrapper}>
-       <AddNewCollection onClick={()=>{navigate(Urls.verbs,{})}}/>
+       <AddNewCollection onClick={()=>{navigate(Urls.verbs+"#"+pickedType,{})}}/>
        {unSolved.length>0 && <ImageOfCollection  name={Urls.mistakes.slice(1)} index={Urls.mistakes} verbs={unSolved}/> }
       <div className={classes.collections}>
         {htmlImagesOfCollections}

@@ -38,23 +38,6 @@ let Collection=(props)=>{
     }
 
   },[pickedCollection,pickedType])
-  // useEffect(()=>{
-  //   if(location.state==undefined & location.hash!=""){
-  //     if(location.hash.slice(1)!=Urls.mistakes){
-  //       let index= Number(location.hash.slice(1));
-  //       if(Number(location.hash.slice(1)) <props.collectionsVerbs.length){
-  //         setCards(shuffle (makingCards(( props.collectionsVerbs[index ].collection))))
-  //         setMemmooCollection(props.collectionsVerbs[index ].collection )
-  //       }
-  //     }else{
-  //       setCards(shuffle (makingCards(( props.unSolvedVerbs))))
-  //       setMemmooCollection(props.unSolvedVerbs )
-  //     }
-  //   }else if( location.state != undefined& location.state.collection !=undefined){
-  //     setCards(shuffle(makingCards(location.state.collection)))   ;
-  //     setMemmooCollection(location.state.collection);
-  //   }
-  // },[])
   useEffect(()=>{
     if(cards.length>0){
       setShouldShowCard(true);
