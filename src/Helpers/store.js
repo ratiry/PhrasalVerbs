@@ -1,8 +1,8 @@
 import create from "zustand";
 import composeUnSolvedVerbs from "./ComposeUnSolvedVerbs";
-import  data  from "./Data";
+import data from "./Data";
 import useLocalStorage from "./Hooks/useLocalStorage";
-import { persist, createJSONStorage } from 'zustand/middleware'
+import { persist, createJSONStorage } from "zustand/middleware";
 
 // export const useStore=create( set=>({
 //   collection:[],
@@ -31,50 +31,79 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 //     return {unSolvedVerbs:verbs}
 //   }),
 
-
-
 // }))
-export const collectionsStore=  Array(data.length).fill(0).map((e,i)=>String(i+1)).map((el)=> create(   
+export const collectionsStore = Array(data.length)
+  .fill(0)
+  .map((e, i) => String(i + 1))
+  .map((el) =>
+    create(
       persist(
-          (set)=>({
-            collections:[],
-            mistakes:[],
-            makeNewCollection:(name,collection)=>set(state=>{
-              let newCollection={name:name,collection:collection};
-              return {collections:[...state.collections,newCollection]}
+        (set) => ({
+          collections: [],
+          mistakes: [],
+          makeNewCollection: (name, collection) =>
+            set((state) => {
+              let newCollection = { name: name, collection: collection };
+              return { collections: [...state.collections, newCollection] };
             }),
-            editCollection:(collection,index)=>set(state=>{
-              return {collections:state.collections.map((el,i)=>i==index ? ({...el, collection:[...collection]}) : el)}
+          editCollection: (collection, index) =>
+            set((state) => {
+              return {
+                collections: state.collections.map((el, i) =>
+                  i == index ? { ...el, collection: [...collection] } : el,
+                ),
+              };
             }),
-            deleteCollection:(index)=>set(state=>{
-              return {collections:state.collections.filter((item,i)=>i!=index)}
+          deleteCollection: (index) =>
+            set((state) => {
+              return {
+                collections: state.collections.filter((item, i) => i != index),
+              };
             }),
-            setCollections:(collections)=>set(state=>{
-              return {collections:collections}
+          setCollections: (collections) =>
+            set((state) => {
+              return { collections: collections };
             }),
-            deleteUnSolved:(mistake)=>set(state=>{
-              return {mistakes:state.mistakes.filter(item => item.name !== mistake.name)}
+          deleteUnSolved: (mistake) =>
+            set((state) => {
+              return {
+                mistakes: state.mistakes.filter(
+                  (item) => item.name !== mistake.name,
+                ),
+              };
             }),
-            addUnSolved:(newMistakes,typeIndex)=>set(state=>{
-              return {mistakes: state.mistakes.concat(composeUnSolvedVerbs( newMistakes,data[typeIndex].contents,state.mistakes))}
+          addUnSolved: (newMistakes, typeIndex) =>
+            set((state) => {
+              return {
+                mistakes: state.mistakes.concat(
+                  composeUnSolvedVerbs(
+                    newMistakes,
+                    data[typeIndex].contents,
+                    state.mistakes,
+                  ),
+                ),
+              };
             }),
         }),
         {
-          name:el,
-          storage: createJSONStorage(() => localStorage)
-        }
-      )
-));
+          name: el,
+          storage: createJSONStorage(() => localStorage),
+        },
+      ),
+    ),
+  );
 
-export const usePickedType=create(set=>({
-  pickedType:0,
-  setPickedType:(index)=>set(state=>{
-    return {pickedType:index}
-  }),
-}))
-export const usePickedCollection=create(set=>({
-  pickedCollection:0,
-  setPickedCollection:(index)=>set(state=>{
-    return {pickedCollection:index}
-  })
-}))
+export const usePickedType = create((set) => ({
+  pickedType: 0,
+  setPickedType: (index) =>
+    set((state) => {
+      return { pickedType: index };
+    }),
+}));
+export const usePickedCollection = create((set) => ({
+  pickedCollection: 0,
+  setPickedCollection: (index) =>
+    set((state) => {
+      return { pickedCollection: index };
+    }),
+}));
