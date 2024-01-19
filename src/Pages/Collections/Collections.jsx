@@ -13,21 +13,22 @@ const Collections = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const pickedType = usePickedType((state) => state.pickedType);
-  const SetMakeNewCollection = collectionsStore[pickedType](
+  
+  const SetMakeNewCollection = props.useCollections(
     (state) => state.makeNewCollection
   );
-  const SSetEditedCollection = collectionsStore[pickedType](
+  const SSetEditedCollection =  props.useCollections(
     (state) => state.editCollection
   );
 
-  const collections = collectionsStore[pickedType](
+  const collections =  props.useCollections(
     (state) => state.collections
   );
-  const unSolved = collectionsStore[pickedType]((state) => state.mistakes);
-  const addUnSolved = collectionsStore[pickedType](
+  const unSolved =  props.useCollections((state) => state.mistakes);
+  const addUnSolved =  props.useCollections(
     (state) => state.addUnSolved
   );
-  const deleteCollection = collectionsStore[pickedType](
+  const deleteCollection =  props.useCollections(
     (state) => state.deleteCollection
   );
   let [shouldShowPopup, setShouldShowPopup] = useState(false);
@@ -59,6 +60,7 @@ const Collections = (props) => {
       index={index}
       name={c.name}
       verbs={c.collection}
+      type={props.type}
     />
   ));
   return (
@@ -66,7 +68,7 @@ const Collections = (props) => {
       <div className={classes.collectionsWrapper}>
         <AddNewCollection
           onClick={() => {
-            navigate(Urls.verbs + "#" + pickedType, {});
+            navigate(Urls.verbs + "#" + props.type, {});
           }}
         />
         {unSolved.length > 0 && (
@@ -74,6 +76,7 @@ const Collections = (props) => {
             name={Urls.mistakes.slice(1)}
             index={Urls.mistakes}
             verbs={unSolved}
+            type={props.type}
           />
         )}
         <div className={classes.collections}>{htmlImagesOfCollections}</div>
@@ -84,7 +87,7 @@ const Collections = (props) => {
             editCollection={editCollection}
             isInPopup={true}
             collection={editedCollection}
-            phrasalVerbs={data[pickedType].contents}
+            phrasalVerbs={data[props.type].contents}
           />
         </Popup>
       )}

@@ -26,11 +26,11 @@ let Collection = (props) => {
   const pickedCollection = usePickedCollection(
     (state) => state.pickedCollection
   );
-  const collections = collectionsStore[pickedType](
+  const collections = props.useCollections(
     (state) => state.collections
   );
-  const mistakes = collectionsStore[pickedType]((state) => state.mistakes);
-  const deleteUnSolved = collectionsStore[pickedType](
+  const mistakes = props.useCollections((state) => state.mistakes);
+  const deleteUnSolved = props.useCollections(
     (state) => state.deleteUnSolved
   );
   useEffect(() => {
@@ -45,10 +45,11 @@ let Collection = (props) => {
         setMemmooCollection(mistakes);
       }
     } else {
+      debugger;
       setCards(shuffle(makingCards(location.state.collection)));
       setMemmooCollection(location.state.collection);
     }
-  }, [pickedCollection, pickedType]);
+  }, [pickedCollection]);
   useEffect(() => {
     if (cards.length > 0) {
       setShouldShowCard(true);
@@ -62,7 +63,7 @@ let Collection = (props) => {
   let [shouldShowToCollectionButton, setShouldShowToCollection] =
     useState(false);
   let onClickPopup = (name) => {
-    navigate(Urls.collections + "#" + pickedType, {
+    navigate("/"+props.type , {
       state: {
         unSolved: unSolved,
         location: location,
@@ -88,7 +89,7 @@ let Collection = (props) => {
       if (location.state != null) {
         setShoulsShowPopup(true);
       } else {
-        navigate(Urls.collections + "#" + pickedType, {
+        navigate("/"+props.type , {
           state: {
             unSolved: unSolved,
             location: location,

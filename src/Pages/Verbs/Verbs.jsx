@@ -1,6 +1,6 @@
-import {  useState } from "react";
+import { useState } from "react";
 import classes from "./Verbs.module.scss";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Verb from "./verb/verb";
 import VerbsContainer from "./VerbsContainer/VerbsContainer";
 import Button from "../../common/Button/Button";
@@ -10,14 +10,20 @@ import { Urls } from "./../../App";
 import { usePickedType } from "../../Helpers/store";
 import data from "../../Helpers/Data";
 const Verbs = (props) => {
+  debugger;
   const location = useLocation();
   const [collection, changeCollection] = useState(props.collection);
-  const pickedType = usePickedType((state) => state.pickedType);
-  const verbs = data[pickedType].contents;
+  let verbs = [];
+
+  if (props.isInPopup == true) {
+    verbs=props.phrasalVerbs;
+  } else{
+    verbs = data[location.hash.slice(1)].contents;
+  }
   let navigate = useNavigate();
   let Submit = (collection) => {
     if ((collection.length > 0) & (props.isInPopup == false)) {
-      navigate(Urls.collection, {
+      navigate(Urls[location.hash.slice(1)] + "#" + "-1", {
         state: { collection: collection, location: location },
       });
     } else if (collection.length > 0) {
@@ -29,11 +35,10 @@ const Verbs = (props) => {
       changeCollection((prevArray) => [...prevArray, verb]);
     } else {
       changeCollection((collection) =>
-        collection.filter((item) => item.name != verb.name),
+        collection.filter((item) => item.name != verb.name)
       );
     }
   };
-  window.collection = collection;
   let verbsHtml = verbs.map((verb) => {
     return (
       <Verb

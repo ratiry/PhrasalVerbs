@@ -7,12 +7,11 @@ import { Urls } from "../../App";
 let PickType = (props) => {
   let setPickedType = usePickedType((state) => state.setPickedType);
   let navigate = useNavigate();
-  let onClickPick = (index) => {
-    setPickedType(index);
-    navigate(Urls.collections + "#" + index);
+  let onClickPick = (name) => {
+    navigate("/"+name);
   };
-  let types = data.map((type, i) => {
-    return <Type onClick={onClickPick} name={type.name} index={i} />;
+  let types =Object.values(data).map((item, i) => {
+    return <Type onClick={()=> onClickPick(item.name)} name={item.name} index={i} />;
   });
   return <div className={classes.pickType}>{types}</div>;
 };

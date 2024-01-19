@@ -11,10 +11,9 @@ const ImageOfCollection = (props) => {
     <Verb onClick={onClckVerb}>{verb.name}</Verb>
   ));
   const pickedCollection = usePickedCollection(
-    (state) => state.pickedCollection,
+    (state) => state.pickedCollection
   );
   console.log(verbs);
-  debugger;
   let navigate = useNavigate();
   return (
     <div className={classes.ImageOfCollection}>
@@ -56,7 +55,7 @@ const ImageOfCollection = (props) => {
       {props.index != Urls.mistakes ? (
         <Button
           onClick={() => {
-            navigate(Urls.collection + "#" + pickedType + "-" + props.index);
+            navigate("/" + props.type + "#" + props.index);
           }}
         >
           To Collection

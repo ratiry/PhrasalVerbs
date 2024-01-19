@@ -3,7 +3,7 @@ import classes from "./Type.module.scss";
 let Type = (props) => {
   return (
     <div className={classes.type}>
-      <Button onClick={() => props.onClick(props.index)}>{props.name}</Button>
+      <Button onClick={props.onClick}>{props.name}</Button>
     </div>
   );
 };
