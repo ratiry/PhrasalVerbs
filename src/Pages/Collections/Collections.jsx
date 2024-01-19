@@ -9,33 +9,30 @@ import Popup from "../../common/Popup/Popup";
 import data from "../../Helpers/Data";
 import Verbs from "../Verbs/Verbs";
 import { collectionsStore, usePickedType } from "../../Helpers/store";
-let Collections = (props) => {
-  let location = useLocation();
-  let navigate = useNavigate();
+const Collections = (props) => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const pickedType = usePickedType((state) => state.pickedType);
   const SetMakeNewCollection = collectionsStore[pickedType](
-    (state) => state.makeNewCollection,
+    (state) => state.makeNewCollection
   );
   const SSetEditedCollection = collectionsStore[pickedType](
-    (state) => state.editCollection,
+    (state) => state.editCollection
   );
-  const SetDeletedCollection = collectionsStore[pickedType](
-    (state) => state.deleteCollection,
-  );
+
   const collections = collectionsStore[pickedType](
-    (state) => state.collections,
+    (state) => state.collections
   );
   const unSolved = collectionsStore[pickedType]((state) => state.mistakes);
   const addUnSolved = collectionsStore[pickedType](
-    (state) => state.addUnSolved,
+    (state) => state.addUnSolved
   );
   const deleteCollection = collectionsStore[pickedType](
-    (state) => state.deleteCollection,
+    (state) => state.deleteCollection
   );
   let [shouldShowPopup, setShouldShowPopup] = useState(false);
   let [editedCollection, setEditedCollection] = useState([]);
   let [indexOfEditedCollection, setIndexOfEditedCollection] = useState(0);
-  let [shouldShowPage, setShouldShowPage] = useState(false);
   let startEditCollection = (collection, index) => {
     setShouldShowPopup(true);
     setEditedCollection(collection);
@@ -48,7 +45,6 @@ let Collections = (props) => {
   };
   useEffect(() => {
     if (location.state != undefined) {
-      debugger;
       addUnSolved(location.state.unSolved, pickedType);
       if (location.state.name != undefined) {
         SetMakeNewCollection(location.state.name, location.state.collection);

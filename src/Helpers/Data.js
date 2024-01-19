@@ -1,4 +1,4 @@
-let data=[
+const data=[
   {
     name:"phrasal verbs",
     contents:[
@@ -7,7 +7,7 @@ let data=[
       {name:"do without",description:["get by"]},
       {name:"feel for",description:["symphasize"]},
       {name:"drop in",description:["go to someone without  appointment"]},
-      {name:"fall out",description:["to fall out of something","to argue with someone without result", "devastate"]},
+      {name: "fall out",description:["to fall out of something","to argue with someone without result", "devastate"]},
       {name:"figure out",description:["discover"],synonyms:["work out"]},
       {name:"get round",description:["to do something that you have intended to do for a long time (with to)","to recover (without to)","deceive somebody (with object)","persuade someone using charm (with object)","deal successfully with problem","travel around"],synonyms:["get about"]},
       {name:"take after",description:["to resemble somebody"]},
@@ -221,6 +221,15 @@ let data=[
       {name:"tell on",description:["snitch"]},
       {name:"whip out",description:["take out very quicky object in the middle"]},
       {name:"die down",description:["become quiet","stop some action"]},
+      {name:"die down",description:["becone quiet","stop an action"]},
+      {name:"speak to",description:["one quility relates to another","some information gives sign about something"]},
+      {name:"frow on",description:["have a bad opinion about something"]},
+      {name:"know of",description:["know but not personally"]},
+      {name:"work at",description:["improve somethong"],synonyms:["work on"]},
+      {name:"lay into",description:["to say bad things about somebody"]},
+      {name:"jack up",description:["raise prices"]},
+      {name:"square off against",description:["to prepare to fight, compete, or argue with someone"]},
+      
 
     ]
   },

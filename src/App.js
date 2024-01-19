@@ -28,20 +28,12 @@ export const Urls = {
   pickType: "/",
 };
 function App() {
-  const [collectionsVerbs, setCollectionsVerbs] = useLocalStorage(
-    "VerbsColll",
-    [],
-  );
-  let [unSolvedVerbs, setUnSolvedVerbs] = useLocalStorage("unSSolvedVerbs", []);
   const setPickedType = usePickedType((state) => state.setPickedType);
   const setPickedCollection = usePickedCollection(
     (state) => state.setPickedCollection,
   );
   let location = useLocation();
-  useEffect(() => {
-    setCollectionsVerbs(upDatingLocalState(collectionsVerbs, data[0].contents));
-    setUnSolvedVerbs(upDatingMistakes(unSolvedVerbs, data[0].contents));
-  }, [data]);
+
   useEffect(() => {
     if (location.hash != "") {
       if (
@@ -78,7 +70,7 @@ function App() {
           ></Route>
           <Route path={Urls.collection} element={<Collection />} />
           <Route path={Urls.mistakes} element={<Collection />} />
-          <Route path={Urls.collections} element={<Collections />}></Route>
+          <Route path={Urls.collections} element={<Collections  />}></Route>
           <Route path={Urls.pickType} element={<PickType />}></Route>
         </Routes>
       </Container>
