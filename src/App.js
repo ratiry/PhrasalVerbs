@@ -55,7 +55,6 @@ function App() {
             path={Urls.verbs}
             element={<Verbs collection={[]} isInPopup={false} />}
           ></Route>
-          <Route path={Urls.mistakes} element={<Collection />} />
           <Route path={Urls.pickType} element={<PickType />}></Route>
           <Route
             path={Urls.idioms}

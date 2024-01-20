@@ -231,6 +231,12 @@ const ddata={
       {name:"lay into",description:["to say bad things about somebody"]},
       {name:"jack up",description:["raise prices"]},
       {name:"square off against",description:["to prepare to fight, compete, or argue with someone"]},
+      {name:"pan out",description:["to make a final result"]},
+      {name:"but out",description:["to acquire a final share of something object in the middle"]},
+      {name:"bounce back",description:["to recover from difficult situation"]},
+      {name:"get ahead of oneself",description:["be hasty"]},
+      {name:"read into",description:["seek for subtle meaning"]},
+      {name:"go up against",description:["challenge someone or something"]}
     ]
   },
   idioms:{

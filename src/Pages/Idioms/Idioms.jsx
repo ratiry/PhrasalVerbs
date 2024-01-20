@@ -12,6 +12,14 @@ const Idioms = (props) => {
     return <Collections type={props.type} useCollections={props.useCollections} />;
 
   }else{
+    if (location.hash.slice(1) == "mistakes") {
+      return (
+        <Collection
+          useCollections={props.useCollections}
+          type={props.type}
+        />
+      );
+    }
     if( Number(location.hash.slice(1))-1>collectionsLength){
       return (
         <>

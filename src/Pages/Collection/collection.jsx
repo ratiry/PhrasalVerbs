@@ -35,7 +35,7 @@ let Collection = (props) => {
   );
   useEffect(() => {
     if (location.state == undefined) {
-      if (location.pathname != Urls.mistakes) {
+      if (location.hash.slice(1) != "mistakes") {
         setCards(
           shuffle(makingCards(collections[pickedCollection].collection))
         );
@@ -73,9 +73,10 @@ let Collection = (props) => {
     });
   };
   let addCount = (solved, card) => {
+    debugger;
     if (!solved) {
       setUnsolved((oldArray) => [...oldArray, card.name]);
-    } else if (location.pathname == Urls.mistakes) {
+    } else {
       deleteUnSolved(card);
     }
     if (count < cards.length - 1) {

@@ -63,7 +63,7 @@ const ImageOfCollection = (props) => {
       ) : (
         <Button
           onClick={() => {
-            navigate(Urls.mistakes + "#" + pickedType + "-" + pickedCollection);
+            navigate("/"+ props.type + "#" +"mistakes");
           }}
         >
           To Mistakes
