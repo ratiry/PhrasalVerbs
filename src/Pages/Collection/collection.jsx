@@ -11,8 +11,6 @@ import PopupInterior from "./PopupInterior/PopupInterior";
 import { Urls } from "./../../App";
 import {
   usePickedCollection,
-  usePickedType,
-  collectionsStore,
 } from "./../../Helpers/store";
 
 let Collection = (props) => {
@@ -21,7 +19,6 @@ let Collection = (props) => {
   console.log(location);
   let [memmoCollection, setMemmooCollection] = useState([]);
   let [cards, setCards] = useState([]);
-  const pickedType = usePickedType((state) => state.pickedType);
 
   const pickedCollection = usePickedCollection(
     (state) => state.pickedCollection
@@ -73,7 +70,6 @@ let Collection = (props) => {
     });
   };
   let addCount = (solved, card) => {
-    debugger;
     if (!solved) {
       setUnsolved((oldArray) => [...oldArray, card.name]);
     } else {

@@ -267,6 +267,12 @@ const ddata={
       {name:"get oneself worked up",description:["feel angry/upset about smth"]},
       {name:"by and large",description:["all considered together"]},      
     ],
+  },
+  prepositions:{
+    name:"prepositions",
+    contents:[
+      {name:"good at",description:["good __ (proficiency)"]},
+    ]
   }
 }
 

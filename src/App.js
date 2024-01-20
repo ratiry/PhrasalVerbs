@@ -17,6 +17,7 @@ import {
   usePhrasalVerbsCollections,
   usePickedCollection,
   usePickedType,
+  usePrepositionsCollections,
   useStore,
 } from "./Helpers/store";
 import PickType from "./Pages/PickType/PickType";
@@ -24,25 +25,26 @@ import breakDownHash from "./Helpers/BreakDownHash";
 import Idioms from "./Pages/Idioms/Idioms";
 import { useIdiomsCollections } from "./Helpers/store";
 import PhrasalVerbs from "./Pages/phrasalVerbs/phrasalVerbs";
+import Prepositions from "./Pages/Prepositions/prepositions";
 export const Urls = {
-  collection: "/Collection",
-  collections: "/Collections",
   verbs: "/Verbs",
-  mistakes: "/Mistakes",
   pickType: "/",
   idioms: "/idioms",
   phrasalVerbs: "/phrasalVerbs",
+  prepositions: "/prepositions",
 };
 function App() {
   const setPickedType = usePickedType((state) => state.setPickedType);
   const setPickedCollection = usePickedCollection(
     (state) => state.setPickedCollection
   );
-  let location = useLocation();
-
+  const location = useLocation();
+                                    
+                              
+             
   useEffect(() => {
     if (location.hash != "") {
-      setPickedCollection(Number(location.hash.slice(1)))
+      setPickedCollection(Number(location.hash.slice(1)));
     }
   }, [location.hash]);
 
@@ -71,6 +73,15 @@ function App() {
               <PhrasalVerbs
                 type={Urls.phrasalVerbs.slice(1)}
                 useCollections={usePhrasalVerbsCollections}
+              />
+            }
+          ></Route>
+          <Route
+            path={Urls.prepositions}
+            element={
+              <Prepositions
+                useCollections={usePrepositionsCollections}
+                type={Urls.prepositions.slice(1)}
               />
             }
           ></Route>
