@@ -5,8 +5,8 @@ import Verbs from "./Pages/Verbs/Verbs";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import data from "./Helpers/Data";
-import Collection from "./Pages/Collection/collection";
-import Collections from "./Pages/Collections/Collections";
+import Collection    from "./Pages/Collection/collection";
+import Collections  from "./Pages/Collections/Collections";
 import useLocalStorage from "./Helpers/Hooks/useLocalStorage";
 import {
   upDatingLocalState,
@@ -14,6 +14,7 @@ import {
 } from "./Helpers/UpdatingLocalState";
 import Container from "./common/Container/Container";
 import {
+
   usePhrasalVerbsCollections,
   usePickedCollection,
   usePickedType,
@@ -38,6 +39,9 @@ function App() {
   const setPickedCollection = usePickedCollection(
     (state) => state.setPickedCollection
   );
+  const a = "";
+  debugger;
+  console.log("g");
   const location = useLocation();
                                     
                               
@@ -67,27 +71,22 @@ function App() {
               />
             }
           ></Route>
-          <Route
-            path={Urls.phrasalVerbs}
-            element={
-              <PhrasalVerbs
-                type={Urls.phrasalVerbs.slice(1)}
-                useCollections={usePhrasalVerbsCollections}
-              />
-            }
-          ></Route>
+          <Route path={Urls.phrasalVerbs} element={ <PhrasalVerbs type={Urls.phrasalVerbs.slice(1)} useCollections={usePhrasalVerbsCollections}/>}></Route>
           <Route
             path={Urls.prepositions}
             element={
               <Prepositions
-                useCollections={usePrepositionsCollections}
-                type={Urls.prepositions.slice(1)}
+                useCollections={usePrepositionsCollections} type={Urls.prepositions.slice(1)}  
               />
             }
           ></Route>
         </Routes>
+
+
+
       </Container>
-      <Footer />
+
+      <Footer            />
     </div>
   );
 }
