@@ -34,7 +34,6 @@ function App() {
   const setPickedType = usePickedType((state) => state.setPickedType);
   const setPickedCollection = usePickedCollection((state) => state.setPickedCollection);
   const a = "";
-  debugger;
   console.log("g");
   const location = useLocation();
 

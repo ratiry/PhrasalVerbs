@@ -8,7 +8,6 @@ function isInArray(value, array) {
 }
 let composeUnSolvedVerbs = (verbs, verbsData, unSolvedVerbs) => {
   let newVerbs = [];
-  debugger;
   for (let i = 0; i < verbs.length; i++) {
     for (let j = 0; j < verbsData.length; j++) {
       if (

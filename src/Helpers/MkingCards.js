@@ -4,6 +4,7 @@ const makingCards = (collection) => {
     for (let j = 0; j < collection[i].description.length; j++) {
       const card=[];
       card.description=collection[i].description[j];
+      debugger;
       for(let u=0;u<Object.values(collection[i]).length;u++){
         if (Object.keys(collection[i])[u]!=="description") {
             card[Object.keys(collection[i])[u]] = Object.values(collection[i])[u];

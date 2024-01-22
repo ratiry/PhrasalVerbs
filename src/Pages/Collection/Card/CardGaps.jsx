@@ -22,6 +22,7 @@ const CardGaps = (props) => {
   let onClick = () => {
     let shouldCheck = true;
     let string = "";
+
     for (let i = 0; i < inputs.length; i++) {
       if (inputs[i].current === "") {
         shouldCheck = false;
@@ -30,7 +31,6 @@ const CardGaps = (props) => {
         string = string + inputs[i].current.value;
       }
     }
-    debugger;
     if (shouldCheck & (string == props.card.answer)) {
       setSolved(true);
     }

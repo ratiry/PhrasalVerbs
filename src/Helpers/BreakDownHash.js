@@ -4,7 +4,6 @@ let breakDownHash = (path, cutFrom) => {
     type = path.split("-");
   } else {
     type = path.slice(cutFrom).split("-");
-    debugger;
   }
   return type.map(Number);
 };

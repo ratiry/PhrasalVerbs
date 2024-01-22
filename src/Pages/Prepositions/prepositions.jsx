@@ -8,7 +8,7 @@ const Prepositions = (props) => {
   const collectionsLength = props.useCollections(
     (state) => state.collections
   ).length;
-  const picture404 = data.phrasalVerbs.picture404;
+  const picture404 = data.prepositions.picture404;
   if (location.hash == "") {
     return (
       <Collections type={props.type} useCollections={props.useCollections} />
@@ -27,7 +27,7 @@ const Prepositions = (props) => {
         <>
           <p>404</p>
           <Picture404 src={picture404} />
-          <p>blabalbal</p>
+          
         </>
       );
     }

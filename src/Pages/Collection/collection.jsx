@@ -44,6 +44,7 @@ let Collection = (props) => {
     } else {
       setCards(shuffle(makingCards(location.state.collection)));
       setMemmooCollection(location.state.collection);
+      let a = shuffle(makingCards(location.state.collection));;
     }
   }, [pickedCollection]);
   useEffect(() => {

@@ -15,7 +15,6 @@ const PhrasalVerbs = (props) => {
       <Collections type={props.type} useCollections={props.useCollections} />
     );
   } else {
-    debugger;
     if (location.hash.slice(1) == "mistakes") {
       return (
         <Collection useCollections={props.useCollections} type={props.type} />

@@ -10,7 +10,6 @@ import { Urls } from "./../../App";
 import { usePickedType } from "../../Helpers/store";
 import data from "../../Helpers/Data";
 const Verbs = (props) => {
-  debugger;
   const location = useLocation();
   const [collection, changeCollection] = useState(props.collection);
   let verbs = [];
