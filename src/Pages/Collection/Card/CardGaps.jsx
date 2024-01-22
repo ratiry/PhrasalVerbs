@@ -1,43 +1,60 @@
+import {useRef} from "react";
+import {useState, useEffect} from "react";
+import classes from "./Card.module.scss";
+import Button from "../../../common/Button/Button";
+import React from "react";
 const CardGaps = (props) => {
-  let input = useRef();
+  const inputs = Array(props.card.description.split("_").length - 1)
+    .fill(0)
+    .map((i) => React.createRef());
   let [solved, setSolved] = useState(false);
   let [retreat, setRetreat] = useState(false);
-  let [shouldShowNote, setShouldShowNote] = useState(false);
-  const task = props.card.description.split("__");
-  debugger;
+  const task = props.card.description.split("_").map((item, index) => {
+    return (
+      <>
+        <p>{item}</p>
+        {index != props.card.description.split("_").length - 1 && (
+          <input ref={inputs[index]} type="text" />
+        )}
+      </>
+    );
+  });
   let onClick = () => {
-    if (input.current.value == props.card.name) {
-      setSolved(true);
-    }
-    setShouldShowNote(false);
-    if (props.card.synonyms != undefined) {
-      if (props.card.synonyms.includes(input.current.value, 0)) {
-        setShouldShowNote(true);
+    let shouldCheck = true;
+    let string = "";
+    for (let i = 0; i < inputs.length; i++) {
+      if (inputs[i].current === "") {
+        shouldCheck = false;
+        break;
+      } else {
+        string = string + inputs[i].current.value;
       }
+    }
+    debugger;
+    if (shouldCheck & (string == props.card.answer)) {
+      setSolved(true);
     }
   };
   let onGiveUpCLick = () => {
     setRetreat(true);
   };
   let onNextClick = () => {
-    input.current.value = "";
+    for(let i=0;i<inputs.length;i++){
+      inputs[i].current.value="";
+    }
     props.onClick(!retreat, props.card);
   };
   useEffect(() => {
     setRetreat(false);
     setSolved(false);
-    setShouldShowNote(false);
   }, [props]);
+
   return (
     <>
       <div className={classes.card}>
-        <div className={classes.description}>
-          <span> {props.card.description}</span>
-        </div>
+        <div className={classes.description}>{task}</div>
         <span>{retreat && "="}</span>
         <span>{retreat && props.card.name}</span>
-        <input ref={input} type="text" />
-        {shouldShowNote && <span>try to think of synonym</span>}
         <div className={classes.buttons}>
           <div onClick={onGiveUpCLick} className={classes.retreat}>
             give up

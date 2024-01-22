@@ -16,7 +16,6 @@ import {
 let Collection = (props) => {
   let location = useLocation();
   let [shouldShowCard, setShouldShowCard] = useState(false);
-  console.log(location);
   let [memmoCollection, setMemmooCollection] = useState([]);
   let [cards, setCards] = useState([]);
 
@@ -35,6 +34,7 @@ let Collection = (props) => {
       if (location.hash.slice(1) != "mistakes") {
         setCards(
           shuffle(makingCards(collections[pickedCollection].collection))
+
         );
         setMemmooCollection(collections[pickedCollection].collection);
       } else {
@@ -42,7 +42,6 @@ let Collection = (props) => {
         setMemmooCollection(mistakes);
       }
     } else {
-      debugger;
       setCards(shuffle(makingCards(location.state.collection)));
       setMemmooCollection(location.state.collection);
     }
@@ -98,7 +97,7 @@ let Collection = (props) => {
   return (
     <>
       <div className={classes.collection}>
-        {shouldShowCard && <Card onClick={addCount} card={cards[count]} />}
+        {shouldShowCard && <Card type={props.type} onClick={addCount} card={cards[count]} />}
         {shouldShowToCollectionButton && (
           <Button
             onClick={() => {

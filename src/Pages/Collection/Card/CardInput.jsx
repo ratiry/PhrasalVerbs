@@ -1,15 +1,38 @@
+import {useRef} from "react";
+import {useState, useEffect} from "react";
 import classes from "./Card.module.scss";
-import data from "./../../../Helpers/Data";
-import { useState } from 'react';
-const CardInput=(props)=>{
-  let a ="";
-  a[0]=5;   
-     
+import Button from "../../../common/Button/Button";
+const CardInput = (props) => {
+  let input = useRef();
+  let [solved, setSolved] = useState(false);
+  let [retreat, setRetreat] = useState(false);
+  let [shouldShowNote, setShouldShowNote] = useState(false);
+
+  let onClick = () => {
+    if (input.current.value == props.card.name) {
+      setSolved(true);
+    }
+    setShouldShowNote(false);
+    if (props.card.synonyms != undefined) {
+      if (props.card.synonyms.includes(input.current.value, 0)) {
+        setShouldShowNote(true);
+      }
+    }
+  };
+  let onGiveUpCLick = () => {
+    setRetreat(true);
+  };
+  let onNextClick = () => {
+    input.current.value = "";
+    props.onClick(!retreat, props.card);
+  };
+  useEffect(() => {
+    setRetreat(false);
+    setSolved(false);
+    setShouldShowNote(false);
+  }, [props]);
   return (
     <>
-      <div>
-        <div><div>gfgdiv  <div></div></div></div>
-      </div>
       <div className={classes.card}>
         <div className={classes.description}>
           <span> {props.card.description}</span>
@@ -38,4 +61,5 @@ const CardInput=(props)=>{
       </div>
     </>
   );
-}
+};
+export default CardInput;

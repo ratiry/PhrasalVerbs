@@ -271,7 +271,7 @@ const ddata={
   prepositions:{
     name:"prepositions",
     contents:[
-      {name:"good at",description:["good __ (proficiency)"]},
+      {name:"good at",description:["good _ (proficiency)"],answer:"at"},
     ]
   }
 }
