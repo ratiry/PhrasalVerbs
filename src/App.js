@@ -74,7 +74,7 @@ function App() {
             element={
               <Prepositions
                 useCollections={usePrepositionsCollections}
-                type={Urls.prepositions.slice(1)}
+                type={Urls.prepositions.slice(1)} 
               />
             }
           ></Route>
