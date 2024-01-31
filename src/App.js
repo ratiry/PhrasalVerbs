@@ -29,6 +29,7 @@ export const Urls = {
   idioms: "/idioms",
   phrasalVerbs: "/phrasalVerbs",
   prepositions: "/prepositions",
+  mistakes:"/mistakes"
 };
 function App() {
   const setPickedType = usePickedType((state) => state.setPickedType);
