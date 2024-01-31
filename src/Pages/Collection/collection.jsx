@@ -30,8 +30,8 @@ let Collection = (props) => {
     (state) => state.deleteUnSolved
   );
   useEffect(() => {
-    if (location.state == undefined & pickedCollection>-1) {
-      if (location.hash.slice(1) != "mistakes") {
+    if (location.state == undefined ) {
+      if (location.hash.slice(1) != "mistakes" & pickedCollection!=-1) {
         setCards(
           shuffle(makingCards(collections[pickedCollection].collection))
 
@@ -44,7 +44,6 @@ let Collection = (props) => {
     } else {
       setCards(shuffle(makingCards(location.state.collection)));
       setMemmooCollection(location.state.collection);
-      let a = shuffle(makingCards(location.state.collection));;
     }
   }, [pickedCollection]);
   useEffect(() => {
