@@ -3,6 +3,8 @@ import composeUnSolvedVerbs from "./ComposeUnSolvedVerbs";
 import data from "./Data";
 import useLocalStorage from "./Hooks/useLocalStorage";
 import { persist, createJSONStorage } from "zustand/middleware";
+import sortingCollections from "./SortingItems";
+import { data } from '.';
 
 
 
@@ -60,6 +62,19 @@ import { persist, createJSONStorage } from "zustand/middleware";
         },
       ),
     )
+export const SortingCollections=create(
+  persist(
+    (set)=>({
+      idioms:[],
+      phrasalVerbs:sortingCollections(data,"phrasalVerbs"),
+      prepositions:[],
+    }),
+    {
+      name:"pre installed collections",
+      storage:createJSONStorage(()=>localStorage)
+    }
+  )
+)
    export const usePhrasalVerbsCollections = create(
      persist(
        (set) => ({
@@ -114,6 +129,7 @@ import { persist, createJSONStorage } from "zustand/middleware";
        }
      )
    ); 
+
       export const usePrepositionsCollections = create(
         persist(
           (set) => ({
