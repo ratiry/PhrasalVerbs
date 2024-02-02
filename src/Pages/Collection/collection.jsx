@@ -38,7 +38,7 @@ let Collection = (props) => {
         );
         setMemmooCollection(collections[pickedCollection].collection);
       } else {
-        setCards(shuffle(makingCards(mistakes)));
+        setCards(shuffle(mistakes));
         setMemmooCollection(mistakes);
       }
     } else {
@@ -69,8 +69,12 @@ let Collection = (props) => {
     });
   };
   let addCount = (solved, card) => {
+    let transformedCard={};
+    for(let i=0;i<Object.keys(card).length;i++){
+      transformedCard[Object.keys(card)[i]]=Object.values(card)[i]
+    }
     if (!solved) {
-      setUnsolved((oldArray) => [...oldArray, card.name]);
+      setUnsolved((oldArray) => [...oldArray, transformedCard]);
     } else {
       deleteUnSolved(card);
     }

@@ -34,8 +34,6 @@ export const Urls = {
 function App() {
   const setPickedType = usePickedType((state) => state.setPickedType);
   const setPickedCollection = usePickedCollection((state) => state.setPickedCollection);
-  const a = "";
-  console.log("g");
   const location = useLocation();
 
   useEffect(() => {

@@ -6,16 +6,17 @@ function isInArray(value, array) {
   }
   return false;
 }
-let composeUnSolvedVerbs = (verbs, verbsData, unSolvedVerbs) => {
+let composeUnSolvedVerbs = (verbs, unSolvedVerbs) => {
   let newVerbs = [];
-  for (let i = 0; i < verbs.length; i++) {
-    for (let j = 0; j < verbsData.length; j++) {
-      if (
-        (verbs[i] == verbsData[j].name) &
-        !isInArray(verbs[i], unSolvedVerbs)
-      ) {
-        newVerbs.push(verbsData[j]);
+  for(let i=0;i<verbs.length;i++){
+    let shouldAdd=true;
+    for(let j=0;j<unSolvedVerbs.length;j++){
+      if(unSolvedVerbs[j].name==verbs[i].name){
+        shouldAdd=false;
       }
+    }
+    if(shouldAdd){
+      newVerbs.push(verbs[i]);
     }
   }
   return newVerbs;

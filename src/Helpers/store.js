@@ -48,7 +48,6 @@ import { persist, createJSONStorage } from "zustand/middleware";
                 mistakes: state.mistakes.concat(
                   composeUnSolvedVerbs(
                     newMistakes,
-                    data.idioms.contents,
                     state.mistakes,
                   ),
                 ),
@@ -103,7 +102,6 @@ import { persist, createJSONStorage } from "zustand/middleware";
                mistakes: state.mistakes.concat(
                  composeUnSolvedVerbs(
                    newMistakes,
-                   data.phrasalVerbs.contents,
                    state.mistakes
                  )
                ),
@@ -162,7 +160,6 @@ import { persist, createJSONStorage } from "zustand/middleware";
                   mistakes: state.mistakes.concat(
                     composeUnSolvedVerbs(
                       newMistakes,
-                      data.prepositions.contents,
                       state.mistakes
                     )
                   ),
