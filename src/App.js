@@ -1,13 +1,9 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {Route, Routes, useLocation} from "react-router-dom";
 import classes from "./App.module.scss";
 import Verbs from "./Pages/Verbs/Verbs";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
-import data from "./Helpers/Data";
-import Collection from "./Pages/Collection/collection";
-import Collections from "./Pages/Collections/Collections";
-import useLocalStorage from "./Helpers/Hooks/useLocalStorage";
 import {upDatingLocalState, upDatingMistakes} from "./Helpers/UpdatingLocalState";
 import Container from "./common/Container/Container";
 import {
@@ -15,21 +11,17 @@ import {
   usePickedCollection,
   usePickedType,
   usePrepositionsCollections,
-  useStore,
 } from "./Helpers/store";
 import PickType from "./Pages/PickType/PickType";
-import breakDownHash from "./Helpers/BreakDownHash";
-import Idioms from "./Pages/Idioms/Idioms";
 import {useIdiomsCollections} from "./Helpers/store";
-import PhrasalVerbs from "./Pages/phrasalVerbs/phrasalVerbs";
-import Prepositions from "./Pages/Prepositions/prepositions";
+import Page from "./Pages/Page";
 export const Urls = {
   verbs: "/Verbs",
   pickType: "/",
   idioms: "/idioms",
   phrasalVerbs: "/phrasalVerbs",
   prepositions: "/prepositions",
-  mistakes:"/mistakes"
+  mistakes: "/mistakes",
 };
 function App() {
   const setPickedType = usePickedType((state) => state.setPickedType);
@@ -55,13 +47,13 @@ function App() {
           <Route
             path={Urls.idioms}
             element={
-              <Idioms type={Urls.idioms.slice(1)} useCollections={useIdiomsCollections} />
+              <Page type={Urls.idioms.slice(1)} useCollections={useIdiomsCollections} />
             }
           ></Route>
           <Route
             path={Urls.phrasalVerbs}
             element={
-              <PhrasalVerbs
+              <Page
                 type={Urls.phrasalVerbs.slice(1)}
                 useCollections={usePhrasalVerbsCollections}
               />
@@ -70,9 +62,9 @@ function App() {
           <Route
             path={Urls.prepositions}
             element={
-              <Prepositions
+              <Page
                 useCollections={usePrepositionsCollections}
-                type={Urls.prepositions.slice(1)} 
+                type={Urls.prepositions.slice(1)}
               />
             }
           ></Route>
