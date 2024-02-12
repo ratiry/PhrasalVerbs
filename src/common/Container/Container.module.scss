@@ -1,11 +1,7 @@
-.container{
-  overflow:scroll;
-  display:flex;
-  align-items:center;
-  flex-direction: column;;
+.container {
   overflow: scroll;
   width:100%;
   &::-webkit-scrollbar {
-    width:0;
+    width: 0;
   }
 }

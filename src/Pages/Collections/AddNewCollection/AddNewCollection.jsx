@@ -4,6 +4,6 @@ let AddNewCollection=(props)=>{
     <div onClick={props.onClick} className={classes.AddNewCollection} >
       <span>+</span>
     </div>
-  )
-}
+  );
+};
 export default AddNewCollection;

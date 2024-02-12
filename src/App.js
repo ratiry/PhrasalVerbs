@@ -1,67 +1,78 @@
-import logo from './logo.svg';
-import classes from './App.module.scss';
-import { useEffect, useState } from 'react';
-import { Route, Routes ,BrowserRouter, useLocation, useNavigate} from 'react-router-dom';
-import Verbs from './Pages/Verbs/Verbs';
-import Footer from './Footer/Footer';
-import Header from './Header/Header';
-import { phrasalVerbs } from './Helpers/Data';
-import Collection from './Pages/Collection/collection';
-import Collections from './Pages/Collections/Collections';
-import composeUnSolvedVerbs from './Helpers/ComposeUnSolvedVerbs';
-import checkForDoubleCollection from './Helpers/CheckForDoubleCollection';
-import useLocalStorage from './Helpers/Hooks/useLocalStorage';
-import {upDatingLocalState,upDatingMistakes} from './Helpers/UpdatingLocalState';
-import Container from './common/Container/Container';
-export const Urls={
-  collection:"/Collection",
-  collections:"/",
-  verbs:"/Verbs",
-  mistakes:"mistakes"
-}
+import {useEffect} from "react";
+import {Route, Routes, useLocation} from "react-router-dom";
+import classes from "./App.module.scss";
+import Verbs from "./Pages/Verbs/Verbs";
+import Footer from "./Footer/Footer";
+import Header from "./Header/Header";
+import {upDatingLocalState, upDatingMistakes} from "./Helpers/UpdatingLocalState";
+import Container from "./common/Container/Container";
+import {
+  usePhrasalVerbsCollections,
+  usePickedCollection,
+  usePickedType,
+  usePrepositionsCollections,
+} from "./Helpers/store";
+import PickType from "./Pages/PickType/PickType";
+import {useIdiomsCollections} from "./Helpers/store";
+import Page from "./Pages/Page";
+export const Urls = {
+  verbs: "/Verbs",
+  pickType: "/",
+  idioms: "/idioms",
+  phrasalVerbs: "/phrasalVerbs",
+  prepositions: "/prepositions",
+  mistakes: "/mistakes",
+};
 function App() {
-  let [collectionsVerbs,setCollectionsVerbs]=useLocalStorage("VerbsColll",[])
-  let [unSolvedVerbs,setUnSolvedVerbs]=useLocalStorage("unSSolvedVerbs",[]);
-  window.unSolvedVerbs=unSolvedVerbs;
-  let location=useLocation();
-  let navigate=useNavigate();
-  let addUnSolvedVerbs=(Verbs)=>{
-    let a=unSolvedVerbs.concat(composeUnSolvedVerbs( Verbs,phrasalVerbs,unSolvedVerbs));
-    setUnSolvedVerbs(a);
-  }
-  let deleteUnSolvedVerb=(Verb)=>{
-    setUnSolvedVerbs(unSolvedVerbs =>unSolvedVerbs.filter(item => item.name !== Verb.name))
-  }
-  let makeNewCollectionVerb=(name,collection)=>{
-    setCollectionsVerbs(collectionsVerbs=>[...collectionsVerbs,{name:name,collection:collection}])
-  }
-  let editCollection=(collection,index)=>{
-    setCollectionsVerbs(collectionsVerbs=>[...collectionsVerbs].map((el,i)=>i==index ? ({...el, collection:[...collection]}) : el))
-  
-  }
-  let deleteCollection=(index)=>{
-    setCollectionsVerbs(collections=>collections.filter((item,i)=>i!=index))
-  }
-  useEffect(()=>{
-    setCollectionsVerbs( upDatingLocalState(collectionsVerbs,phrasalVerbs) )
-    setUnSolvedVerbs(upDatingMistakes(unSolvedVerbs,phrasalVerbs))
-  },[phrasalVerbs])
-  
+  const setPickedType = usePickedType((state) => state.setPickedType);
+  const setPickedCollection = usePickedCollection((state) => state.setPickedCollection);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash != "") {
+      setPickedCollection(Number(location.hash.slice(1)));
+    }
+  }, [location.hash]);
 
   return (
+    <div className={classes.App}>
+      <Header />
+      <Container>
+        <Routes>
+          <Route
+            path={Urls.verbs}
+            element={<Verbs collection={[]} isInPopup={false} />}
+          ></Route>
+          <Route path={Urls.pickType} element={<PickType />}></Route>
+          <Route
+            path={Urls.idioms}
+            element={
+              <Page type={Urls.idioms.slice(1)} useCollections={useIdiomsCollections} />
+            }
+          ></Route>
+          <Route
+            path={Urls.phrasalVerbs}
+            element={
+              <Page
+                type={Urls.phrasalVerbs.slice(1)}
+                useCollections={usePhrasalVerbsCollections}
+              />
+            }
+          ></Route>
+          <Route
+            path={Urls.prepositions}
+            element={
+              <Page
+                useCollections={usePrepositionsCollections}
+                type={Urls.prepositions.slice(1)}
+              />
+            }
+          ></Route>
+        </Routes>
+      </Container>
 
-      <div className={classes.App}>
-        <Header/>
-          <Container>
-            <Routes>
-              <Route  path={Urls.verbs}  element={<Verbs collection={[]} phrasalVerbs={phrasalVerbs} isInPopup={false}/>}></Route>
-              <Route path={Urls.collection} element={<Collection collectionsVerbs={collectionsVerbs} deleteUnSolvedVerb={deleteUnSolvedVerb} unSolvedVerbs={unSolvedVerbs} phrasalVerbs={phrasalVerbs}  />}/>
-              <Route path={Urls.collections}  element={<Collections deleteCollection={deleteCollection} editCollection={editCollection} unSolvedVerbs={unSolvedVerbs} makeNewCollectionVerb={makeNewCollectionVerb} addUnSolvedVerbs={addUnSolvedVerbs}  collectionsVerbs={collectionsVerbs}/>}></Route> 
-            </Routes>
-          </Container>
-        <Footer/>
-      </div>
-
+      <Footer />
+    </div>
   );
 }
 

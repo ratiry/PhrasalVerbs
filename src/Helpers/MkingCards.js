@@ -1,18 +1,18 @@
-
-
-let makingCards=(collection)=>{
-  let cards=[]
-  for(let i=0;i<collection.length;i++){
-    if(collection[i].synonyms!=undefined){
-      for(let j=0;j<collection[i].description.length;j++){
-        cards.push({name:collection[i].name,description:collection[i].description[j],synonyms:collection[i].synonyms})
+const makingCards = (collection) => {
+  const cards = [];
+  for (let i = 0; i < collection.length; i++) {
+    for (let j = 0; j < collection[i].description.length; j++) {
+      const card=[];
+      card.description=collection[i].description[j];
+      for(let u=0;u<Object.values(collection[i]).length;u++){
+        if (Object.keys(collection[i])[u]!=="description") {
+            card[Object.keys(collection[i])[u]] = Object.values(collection[i])[u];
+        }
       }
-    }else{
-      for(let j=0;j<collection[i].description.length;j++){
-        cards.push({name:collection[i].name,description:collection[i].description[j]})
-      }
+      cards.push(card)
     }
+     
   }
-  return cards;
+  return cards
 }
 export default makingCards;

@@ -1,5 +1,16 @@
-.verbs{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+.verbs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .itemsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    p {
+      width: 0;
+    }
+    .items {
+      display: flex;
+    }
+  }
 }
