@@ -68,7 +68,7 @@ const Collections = (props) => {
       <div className={classes.collectionsWrapper}>
         <AddNewCollection
           onClick={() => {
-            navigate(Urls.verbs + "#" + props.type, {});
+            navigate(Urls[props.type] + "#" + "verbs", {});
           }}
         />
         {unSolved.length > 0 && (

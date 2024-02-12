@@ -4,9 +4,6 @@ import data from "./Data";
 import useLocalStorage from "./Hooks/useLocalStorage";
 import { persist, createJSONStorage } from "zustand/middleware";
 import sortingCollections from "./SortingItems";
-import { data } from '.';
-
-
 
  export const useIdiomsCollections=create(
       persist(
@@ -62,19 +59,7 @@ import { data } from '.';
         },
       ),
     )
-export const SortingCollections=create(
-  persist(
-    (set)=>({
-      idioms:[],
-      phrasalVerbs:sortingCollections(data,"phrasalVerbs"),
-      prepositions:[],
-    }),
-    {
-      name:"pre installed collections",
-      storage:createJSONStorage(()=>localStorage)
-    }
-  )
-)
+
    export const usePhrasalVerbsCollections = create(
      persist(
        (set) => ({
