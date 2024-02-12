@@ -54,7 +54,7 @@ import sortingCollections from "./SortingItems";
             }),
         }),
         {
-          name: "idioms",
+          name: "idioms4",
           storage: createJSONStorage(() => localStorage),
         },
       ),
@@ -109,7 +109,7 @@ import sortingCollections from "./SortingItems";
            }),
        }),
        {
-         name: "phrasalVerbs",
+         name: "phrasalVerbs4",
          storage: createJSONStorage(() => localStorage),
        }
      )
@@ -168,7 +168,7 @@ import sortingCollections from "./SortingItems";
               }),
           }),
           {
-            name: "prepositions",
+            name: "prepositions4",
             storage: createJSONStorage(() => localStorage),
           }
         )

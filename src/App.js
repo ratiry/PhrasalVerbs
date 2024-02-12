@@ -4,8 +4,8 @@ import classes from "./App.module.scss";
 import Verbs from "./Pages/Verbs/Verbs";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
-import {upDatingLocalState, upDatingMistakes} from "./Helpers/UpdatingLocalState";
 import Container from "./common/Container/Container";
+import data from "./Helpers/Data";
 import {
   usePhrasalVerbsCollections,
   usePickedCollection,
@@ -15,6 +15,7 @@ import {
 import PickType from "./Pages/PickType/PickType";
 import {useIdiomsCollections} from "./Helpers/store";
 import Page from "./Pages/Page";
+import updatingCollections from "./Helpers/updatingCollections";
 export const Urls = {
   verbs: "/Verbs",
   pickType: "/",
@@ -27,13 +28,22 @@ function App() {
   const setPickedType = usePickedType((state) => state.setPickedType);
   const setPickedCollection = usePickedCollection((state) => state.setPickedCollection);
   const location = useLocation();
-
+  const phrasalVerbsCollections=usePhrasalVerbsCollections(state=>state.collections);
+  const phrasalVerbsSet=usePhrasalVerbsCollections(state=>state.setCollections);
+  const idiomsCollections=useIdiomsCollections(state=>state.collections);
+  const idiomsSet=useIdiomsCollections(state=>state.setCollections);
+  const prepositionsCollections=usePrepositionsCollections(state=>state.collections);
+  const prepositionsSet=usePrepositionsCollections(state=>state.setCollections);
   useEffect(() => {
     if (location.hash != "") {
       setPickedCollection(Number(location.hash.slice(1)));
     }
   }, [location.hash]);
-
+  useEffect(()=>{
+    prepositionsSet(updatingCollections(prepositionsCollections,data[Urls.prepositions.slice(1)].contents))
+    phrasalVerbsSet(updatingCollections(phrasalVerbsCollections,data[Urls.phrasalVerbs.slice(1)].contents))
+    idiomsSet(updatingCollections(idiomsCollections,data[Urls.idioms.slice(1)].contents))
+  },[data])
   return (
     <div className={classes.App}>
       <Header />
