@@ -156,7 +156,6 @@ import sortingCollections from "./SortingItems";
             addUnSolved: (newMistakes, typeIndex) =>
             
               set((state) => {
-                debugger;
                 return {
                   mistakes: state.mistakes.concat(
                     composeUnSolvedVerbs(

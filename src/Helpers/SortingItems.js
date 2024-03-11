@@ -11,7 +11,6 @@ const uniqueArray = (array) => {
     }
     newArray.push(items);
   }
-  debugger;
   return newArray;
 };
 const sortingCollections = (data, type) => {
@@ -36,7 +35,6 @@ const sortingCollections = (data, type) => {
         }
       }
       break;
-      debugger;
     case "idioms":
       for (let i = 0; i < data.length; i++) {
         if (Object.keys(types).indexOf(data[i].name.split(" ")[0]) > -1) {

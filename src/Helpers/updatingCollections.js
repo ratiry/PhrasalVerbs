@@ -13,7 +13,6 @@ const updatingCollections=(collections,data)=>{
         }
         newCollections.push(collection);
    }
-   debugger;
    return newCollections;
  
 }
