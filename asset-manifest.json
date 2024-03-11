@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Phrasal-verbs/static/css/main.6d840410.css",
-    "main.js": "/Phrasal-verbs/static/js/main.54f780c9.js",
-    "static/js/787.28cb0dcd.chunk.js": "/Phrasal-verbs/static/js/787.28cb0dcd.chunk.js",
-    "index.html": "/Phrasal-verbs/index.html",
-    "main.6d840410.css.map": "/Phrasal-verbs/static/css/main.6d840410.css.map",
-    "main.54f780c9.js.map": "/Phrasal-verbs/static/js/main.54f780c9.js.map",
-    "787.28cb0dcd.chunk.js.map": "/Phrasal-verbs/static/js/787.28cb0dcd.chunk.js.map"
+    "main.css": "/PhrasalVerbs/static/css/main.6d840410.css",
+    "main.js": "/PhrasalVerbs/static/js/main.53501ba4.js",
+    "static/js/787.28cb0dcd.chunk.js": "/PhrasalVerbs/static/js/787.28cb0dcd.chunk.js",
+    "index.html": "/PhrasalVerbs/index.html",
+    "main.6d840410.css.map": "/PhrasalVerbs/static/css/main.6d840410.css.map",
+    "main.53501ba4.js.map": "/PhrasalVerbs/static/js/main.53501ba4.js.map",
+    "787.28cb0dcd.chunk.js.map": "/PhrasalVerbs/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6d840410.css",
-    "static/js/main.54f780c9.js"
+    "static/js/main.53501ba4.js"
   ]
 }
