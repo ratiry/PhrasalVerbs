@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Pharasal-verbs/static/css/main.6d840410.css",
+    "main.js": "/Pharasal-verbs/static/js/main.8bdea7a2.js",
+    "static/js/787.28cb0dcd.chunk.js": "/Pharasal-verbs/static/js/787.28cb0dcd.chunk.js",
+    "index.html": "/Pharasal-verbs/index.html",
+    "main.6d840410.css.map": "/Pharasal-verbs/static/css/main.6d840410.css.map",
+    "main.8bdea7a2.js.map": "/Pharasal-verbs/static/js/main.8bdea7a2.js.map",
+    "787.28cb0dcd.chunk.js.map": "/Pharasal-verbs/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6d840410.css",
+    "static/js/main.8bdea7a2.js"
+  ]
+}
