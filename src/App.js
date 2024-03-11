@@ -44,6 +44,7 @@ function App() {
     phrasalVerbsSet(updatingCollections(phrasalVerbsCollections,data[Urls.phrasalVerbs.slice(1)].contents))
     idiomsSet(updatingCollections(idiomsCollections,data[Urls.idioms.slice(1)].contents))
   },[data])
+
   return (
     <div className={classes.App}>
       <Header />

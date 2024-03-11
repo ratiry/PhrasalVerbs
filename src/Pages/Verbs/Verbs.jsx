@@ -14,11 +14,7 @@ const Verbs = (props) => {
   const location = useLocation();
   const [collection, changeCollection] = useState(props.collection);
   let verbs = [];
-  if (props.isInPopup == true) {
-    verbs = props.phrasalVerbs;
-  } else {
-    verbs = sortingCollections(data[props.type].contents, props.type);
-  }
+  verbs = sortingCollections(data[props.type].contents, props.type);
   let navigate = useNavigate();
   let Submit = (collection) => {
     if ((collection.length > 0) & (props.isInPopup == false)) {

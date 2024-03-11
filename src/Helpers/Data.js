@@ -380,7 +380,7 @@ const ddata={
       {name:"protest against",description:["protest _ something"],answer:"against",type:"verb"},
       {name:"consult on",description:["consult _ the matter"],answer:"on",type:"verb"},
       {name:"have idea of",description:["Do you _ any idea _ how to do it? "],answer:"haveof",type:"verb phrase"},
-      {name:"have intention of",description:["I do not _ any intention _ doing it"],answer:"haveof",type:"verb Phrase"},
+      {name:"have intention of",description:["I do  not _ any intention _ doing it"],answer:"haveof",type:"verb Phrase"},
       {name:"take notice of",description:["do not _ notice _ what he says"],answer:"takeof",type:"verb phrase"},
       {name:"take pride in",description:["I _ a lot of pride  _ my work"],answer:"takein",type:"verb phrase"},
       {name:"accuse of",description:["accuse sb _ something"],answer:"of",type:"verb"},
@@ -388,9 +388,18 @@ const ddata={
       {name:"suspicious of",description:["suspicious _ somebody"],answer:"of",type:"verb"},
       {name:"shoplift from",description:["shoplift _ store"],answer:"from",type:"verb"},
       {name:"with the aim of",description:["I did it _ the aim _ achieving my dream"],answer:"withof",type:"phrase"},
-
+      {nane:"on impulse",description:["I always shop _  impulse"],answer:"on",type:"phrase"},
+      {name:"on good terms with",description:["I am _ good terms _ my roomates"],answer:"onwith",type:"phrase"},
+      {name:"out of place",description:["We looked _ of place in the restaraunt"],answer:"out",type:"phrase"},
+      {name:"mad about",description:["I am mad _ cycling (interest in)"],answer:"about",type:"adjective"},
+      {name:"mad with",description:["I am mad _ him for treating me like that"],answer:"with",type:"adjective"},
+      {name:"tired of",description:["I am tired _ waiting"],answer:"of",type:"adjective"},
+      {name:"wrong about",description:["I was wrong _ you"],answer:"about",type:"adjective"},
+      {name:"lean on",description:["he leaned _ a wall"],answer:"on",type:"verb"},
+      {name:"shame on",description:["shame _ him!!!"],answer:"on",type:"noun"},
     ]
   }
 }
+export const timeStages=[1,2,6,31]//in days
 
 export default ddata;

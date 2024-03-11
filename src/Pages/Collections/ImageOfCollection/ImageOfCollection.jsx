@@ -13,6 +13,7 @@ const ImageOfCollection = (props) => {
   const pickedCollection = usePickedCollection(
     (state) => state.pickedCollection
   );
+  
   console.log(verbs);
   let navigate = useNavigate();
   return (

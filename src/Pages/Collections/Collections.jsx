@@ -9,6 +9,7 @@ import Popup from "../../common/Popup/Popup";
 import data from "../../Helpers/Data";
 import Verbs from "../Verbs/Verbs";
 import { collectionsStore, usePickedType } from "../../Helpers/store";
+import makeDate from "../../Helpers/MakingDate";
 const Collections = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -31,24 +32,25 @@ const Collections = (props) => {
   const deleteCollection =  props.useCollections(
     (state) => state.deleteCollection
   );
+
   let [shouldShowPopup, setShouldShowPopup] = useState(false);
   let [editedCollection, setEditedCollection] = useState([]);
   let [indexOfEditedCollection, setIndexOfEditedCollection] = useState(0);
   let startEditCollection = (collection, index) => {
     setShouldShowPopup(true);
     setEditedCollection(collection);
-
     setIndexOfEditedCollection(index);
   };
   let editCollection = (collection) => {
     SSetEditedCollection(collection, indexOfEditedCollection);
     setShouldShowPopup(false);
   };
+
   useEffect(() => {
     if (location.state != undefined) {
       addUnSolved(location.state.unSolved, pickedType);
       if (location.state.name != undefined) {
-        SetMakeNewCollection(location.state.name, location.state.collection);
+        SetMakeNewCollection(location.state.name, location.state.collection,makeDate());
       }
     }
     navigate(location.pathname + location.hash, {});
@@ -59,6 +61,7 @@ const Collections = (props) => {
       startEditCollection={startEditCollection}
       index={index}
       name={c.name}
+      date={c.date}
       verbs={c.collection}
       type={props.type}
     />
@@ -88,6 +91,7 @@ const Collections = (props) => {
             isInPopup={true}
             collection={editedCollection}
             phrasalVerbs={data[props.type].contents}
+            type={props.type}
           />
         </Popup>
       )}

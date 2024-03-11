@@ -10,9 +10,9 @@ import sortingCollections from "./SortingItems";
         (set) => ({
           collections: [],
           mistakes: [],
-          makeNewCollection: (name, collection) =>
+          makeNewCollection: (name, collection,date,timeStage,wasExcercised) =>
             set((state) => {
-              let newCollection = { name: name, collection: collection };
+              let newCollection = { name: name, collection: collection,date:date,timeStage:timeStage,wasExcercised:wasExcercised };
               return { collections: [...state.collections, newCollection] };
             }),
           editCollection: (collection, index) =>
@@ -65,9 +65,9 @@ import sortingCollections from "./SortingItems";
        (set) => ({
          collections: [],
          mistakes: [],
-         makeNewCollection: (name, collection) =>
+         makeNewCollection: (name, collection,date,timeStage,wasExcercised) =>
            set((state) => {
-             let newCollection = { name: name, collection: collection };
+             let newCollection = { name: name, collection: collection,date:date,timeStage:timeStage,wasExcercised:wasExcercised };
              return { collections: [...state.collections, newCollection] };
            }),
          editCollection: (collection, index) =>
@@ -120,9 +120,9 @@ import sortingCollections from "./SortingItems";
           (set) => ({
             collections: [],
             mistakes: [],
-            makeNewCollection: (name, collection) =>
+            makeNewCollection: (name, collection,date,timeStage,wasExcercised) =>
               set((state) => {
-                let newCollection = { name: name, collection: collection };
+                let newCollection = { name: name, collection: collection ,date:date,timeStage:timeStage,wasExcercised:wasExcercised};
                 return { collections: [...state.collections, newCollection] };
               }),
             editCollection: (collection, index) =>

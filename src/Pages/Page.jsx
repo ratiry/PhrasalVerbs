@@ -23,7 +23,6 @@ const Page = (props) => {
     <>
       <p>404</p>
       <Picture404 src={picture404} />
-      <p>if you keep on learing them , You will not see yourself in that meme</p>
     </>
   );
 };
